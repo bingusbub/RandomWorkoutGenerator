@@ -1,2 +1,1 @@
-## RandomWorkoutGenerator
-# Testing from another PC
+# RandomWorkoutGenerator
