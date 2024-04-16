@@ -44,39 +44,71 @@ class ExerciseCompendium {
                 {muscleGroup: 'Back', exerciseName: 'Narrow Grip Lat Pulldown', fatigueNum: 3},
                 {muscleGroup: 'Back', exerciseName: 'Cable Row', fatigueNum: 2},
                 {muscleGroup: 'Back', exerciseName: 'Machine Row', fatigueNum: 2},
-                {muscleGroup: 'Back', exerciseName: 'Barbell Deadlift', fatigueNum: 4}
+                {muscleGroup: 'Back', exerciseName: 'Barbell Deadlift', fatigueNum: 4},
+                {muscleGroup: 'Back', exerciseName: 'Back Extension', fatigueNum: 3}
             ],
             Biceps: [
-                {}
+                {muscleGroup: 'Biceps', exerciseName: 'Hammer Curl', fatigueNum: 1},
+                {muscleGroup: 'Biceps', exerciseName: 'Incline Dumbbell Curl', fatigueNum: 2},
+                {muscleGroup: 'Biceps', exerciseName: 'EZ Bar Preacher Curl', fatigueNum: 3},
+                {muscleGroup: 'Biceps', exerciseName: 'Machine Preacher Curl', fatigueNum: 2},
+                {muscleGroup: 'Biceps', exerciseName: 'Spider Curl', fatigueNum: 2},
+                {muscleGroup: 'Biceps', exerciseName: 'Cable Curl', fatigueNum: 1},
+                {muscleGroup: 'Biceps', exerciseName: 'Standing EZ Bar Curl', fatigueNum: 2}
             ],
             Triceps: [
-
+                {muscleGroup: 'Triceps', execiseName: 'Tricep Overhead Press (rope)', fatigueNum: 2},
+                {muscleGroup: 'Biceps', exerciseName: 'Tricep Overhead Press (bar)', fatigueNum: 2},
+                {muscleGroup: 'Biceps', exerciseName: 'EZ Bar Skull Crusher', fatigueNum: 3},
+                {muscleGroup: 'Biceps', exerciseName: 'EZ Bar JM Press', fatigueNum: 3},
+                {muscleGroup: 'Biceps', exerciseName: 'Tricep Pushdown (rope)', fatigueNum: 1},
+                {muscleGroup: 'Biceps', exerciseName: 'Tricep Pushdown (bar)', fatigueNum: 1},
+                {muscleGroup: 'Biceps', exerciseName: 'French Press', fatigueNum: 2}
             ],
             Forearms: [
-
+                {muscleGroup: 'Forearms', exerciseName: 'Dumbbell Wrist Curl', fatigueNum: 1},
+                {muscleGroup: 'Forearms', exerciseName: 'Barbell Wrist Curl', fatigueNum: 1}
             ],
             Abdominals: [
-
+                {muscleGroup: 'Abdominals', exerciseName: 'Dumbbell Ab-Crunch', fatigueNum: 2},
+                {muscleGroup: 'Abdominals', exerciseName: 'Captains Chair Leg raises', fatigueNum: 3},
+                {muscleGroup: 'Abdominals', exerciseName: 'Hanging Leg Raises', fatigueNum: 4},
+                {muscleGroup: 'Abdominals', exerciseName: 'Decline Ab-Crunch', fatigueNum: 2},
+                {muscleGroup: 'Abdominals', exerciseName: 'Cable Ab Curl', fatigueNum: 2},
+                {muscleGroup: 'Abdominals', exerciseName: 'machine Abs', fatigueNum: 3}
             ],
             Glutes: [
+                {muscleGroup: 'Glutes', exerciseName: 'Barbell Hip Thrust', fatigueNum: 3},
+                {muscleGroup: 'Glutes', exerciseName: 'Machine Hip Thrust', fatigueNum: 3},
+                {muscleGroup: 'Glutes', exerciseName: 'Glute-Focused Walking Lunge', fatigueNum: 4},
+                {muscleGroup: 'Glutes', exerciseName: 'Single Leg Barbell Hip Thrust', fatigueNum: 3},
+                {muscleGroup: 'Glutes', exerciseName: 'Glute Machine', fatigueNum: 2},
+                {muscleGroup: 'Glutes', exerciseName: 'Cable Pullthrough', fatigueNum: 2}
 
             ],
             Quadriceps: [
                 {muscleGroup: 'Quadriceps', exerciseName: 'Front Squat', fatigueNum: 4},
                 {muscleGroup: 'Quadriceps', exerciseName: 'Back Squat', fatigueNum: 3},
                 {muscleGroup: 'Quadriceps', exerciseName: 'Leg Extension', fatigueNum: 1},
-                {muscleGroup: 'Quadriceps', exerciseName: 'Quad-Focused Walking Lunge', fatigueNum: 3},
+                {muscleGroup: 'Quadriceps', exerciseName: 'Quad-Focused Walking Lunge', fatigueNum: 4},
                 {muscleGroup: 'Quadriceps', exerciseName: 'Leg Press', fatigueNum: 2},
                 {muscleGroup: 'Quadriceps', exerciseName: 'Smith Machine Depth Split Squat', fatigueNum: 5},
                 {muscleGroup: 'Quadriceps', exerciseName: 'Sissy Squat', fatigueNum: 4},
                 {muscleGroup: 'Quadriceps', exerciseName: 'Hack Squat', fatigueNum: 3},
-                {muscleGroup: 'Quadriceps', exerciseName: 'Pendulum Squat', fatigueNum: 3}
+                {muscleGroup: 'Quadriceps', exerciseName: 'Pendulum Squat', fatigueNum: 3},
+                {muscleGroup: 'Quadriceps', exerciseName: 'Bulgarian Split-Squat', fatigueNum: 5}
             ],
             Hamstrings: [
-
+                {muscleGroup: 'Hamstrings', exerciseName: 'Romanian Deadlift', fatigueNum: 5},
+                {muscleGroup: 'Hamstrings', exerciseName: 'Seated Leg Curl', fatigueNum: 2},
+                {muscleGroup: 'Hamstrings', exerciseName: 'Laying Leg Curl', fatigueNum: 2},
+                {muscleGroup: 'Hamstrings', exerciseName: 'Standing Leg Curl', fatigueNum: 3},
             ],
             Calves: [
-
+                {muscleGroup: 'Calves', exerciseName: 'Leg Press Calf Raise', fatigueNum: 3},
+                {muscleGroup: 'Calves', exerciseName: 'Standing Calf Raise', fatigueNum: 2},
+                {muscleGroup: 'Calves', exerciseName: 'seated Calf Raise', fatigueNum: 1},
+                {muscleGroup: 'Calves', exerciseName: 'Single Leg Calf Raise', fatigueNum: 2}
             ]
         };
     }
@@ -104,5 +136,4 @@ class ExerciseCompendium {
 }
 
 const compendium = new ExerciseCompendium();
-compendium.addExercise('Shoulders', 'Dumbbell Seated Shoulder Press', );
 console.log(compendium.exercises);
