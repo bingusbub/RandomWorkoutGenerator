@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Randomizer</title>
+    <script src="./main.mjs" type="module" defer></script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img id="logo" src="#">
+            </div>
+            <div class="header-list">
+                <ul>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <label for="worktype">WHAT KIND OF WORKOUT DO YOU WANT TO GENERATE?</label>
+            <br>
+                <select id="worktype" name="worktype" required>
+                    <option value="full" id="fbw">Full Body Workout</option>
+                    <option value="upper" id="ubw">Upper Body Workout</option>
+                    <option value="lower" id="lbw">Lower Body Workout></option>
+                    <option value="upperpush" id="upushw">Upper Push Workout</option>
+                    <option value="upperpull" id="upullw">Upper Pull Workout</option>
+                    <option value="shoulders" id="sw">Shoulder Workout</option>
+                    <option value="arms" id="aw">Arm Workout</option>
+                </select>
+            <br>
+            <label for="amount">HOW MANY EXERCISES DO YOU WANT IN YOUR WORKOUT? (Min: 4 Max: 12)</label>
+            <br>
+                <input type="number" name="amount" id="amount" min="4" max="12">
+            <br>
+            <button id="generateWorkout">Generate!</button>
+        </div>
+        <div class="container">
+            
+            <table id="workout">
+                <thead>
+                    <tr>
+                        <th scope="col" id="exerciseName">EXERCISE</th>
+                        <th scope="col" id="sets">SETS</th>
+                        <th scope="col" id="reps">REPS</th>
+                        <th scope="col" id="fatigueNum">FATIGUE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
+        <div class="container">
+            <h3>ABOUT</h3>
+        </div>
+    </div>
+</body>
+</html>
