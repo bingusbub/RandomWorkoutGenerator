@@ -49,7 +49,9 @@ const exerciseList = {
     ],
     _forearms: [
         {muscleGroup: 'Forearms', exerciseName: 'Dumbbell Wrist Curl', fatigueNum: 2},
-        {muscleGroup: 'Forearms', exerciseName: 'Barbell Wrist Curl', fatigueNum: 2}
+        {muscleGroup: 'Forearms', exerciseName: 'Barbell Wrist Curl', fatigueNum: 2},
+        {muscleGroup: 'Forearms', exerciseName: 'Barbell Wrist Extension', fatigueNum: 2},
+        {muscleGroup: 'Forearms', exerciseName: 'Dumbbell Wrist Extension', fatigueNum: 2}
     ],
     _abdominals: [
         {muscleGroup: 'Abdominals', exerciseName: 'Dumbbell Ab-Crunch', fatigueNum: 4},
@@ -66,7 +68,6 @@ const exerciseList = {
         {muscleGroup: 'Glutes', exerciseName: 'Single Leg Barbell Hip Thrust', fatigueNum: 6},
         {muscleGroup: 'Glutes', exerciseName: 'Glute Machine', fatigueNum: 4},
         {muscleGroup: 'Glutes', exerciseName: 'Cable Pullthrough', fatigueNum: 3}
-
     ],
     _quadriceps: [
         {muscleGroup: 'Quadriceps', exerciseName: 'Front Squat', fatigueNum: 9},
@@ -143,13 +144,16 @@ const exerciseList = {
             let sets, reps;
             if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
                 sets = 4;
-                reps = Math.floor(Math.random() * (23) + 8); // random number between 8 and 30
+                // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8;
             } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
                 sets = 3;
-                reps = Math.floor(Math.random() * (23) + 8); // random number between 8 and 30
+                // Generate even numbers between 8 and 20
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8;
             } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
                 sets = 2;
-                reps = Math.floor(Math.random() * (13) + 8); // random number between 8 and 20
+                // Generate even numbers between 8 and 20
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8;
             }
     
             // Add exercise to the workout list
@@ -166,8 +170,414 @@ const exerciseList = {
         selectedExercises.sort((a, b) => b.fatigueNum - a.fatigueNum);
     
         return selectedExercises;
-    }
+    },
     
+    generateUpperBodyWorkout(exerciseAmount) {
+        if (exerciseAmount < 4 || exerciseAmount > 12) {
+            console.error("The number of exercises must be between 4 and 12.");
+            return;
+        }
+    
+        const upperBodyGroups = ['_shoulders', '_chest', '_back', '_biceps', '_triceps', '_forearms', '_abdominals'];
+        const selectedExercises = [];
+        const usedMuscleGroups = new Set();
+        const usedExerciseNames = new Set();
+    
+        while (selectedExercises.length < exerciseAmount) {
+            const availableGroups = upperBodyGroups.filter(group => !usedMuscleGroups.has(group));
+    
+            // If all groups are used, reset to allow repeats of muscle groups but still track exercise names
+            if (availableGroups.length === 0) {
+                usedMuscleGroups.clear();
+                continue;
+            }
+    
+            // Select random muscle group from available groups
+            const randomGroup = availableGroups[Math.floor(Math.random() * availableGroups.length)];
+            usedMuscleGroups.add(randomGroup);
+    
+            // Filter exercises to only those not already used
+            const exercises = this[randomGroup].filter(exercise => !usedExerciseNames.has(exercise.exerciseName));
+            if (exercises.length === 0) {
+                continue; // Skip if no available exercises are left in this group
+            }
+    
+            // Select a random exercise from the filtered list
+            const randomExercise = exercises[Math.floor(Math.random() * exercises.length)];
+            usedExerciseNames.add(randomExercise.exerciseName);
+    
+            // Determine sets and reps based on fatigue number
+            let sets, reps;
+            if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
+                sets = 4;
+                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
+                sets = 3;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
+                sets = 2;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+            }
+    
+            // Add exercise to the workout list
+            selectedExercises.push({
+                muscleGroup: randomGroup.substring(1), // Remove the underscore for display
+                exerciseName: randomExercise.exerciseName,
+                sets: sets,
+                reps: reps,
+                fatigueNum: randomExercise.fatigueNum
+            });
+        }
+    
+        // Sort exercises by muscle group and then by fatigue number descending
+        selectedExercises.sort((a, b) => {
+            if (a.muscleGroup === b.muscleGroup) {
+                return b.fatigueNum - a.fatigueNum;
+            }
+            return a.muscleGroup.localeCompare(b.muscleGroup);
+        });
+    
+        return selectedExercises;
+    },
+
+    generateLowerBodyWorkout(exerciseAmount) {
+        if (exerciseAmount < 4 || exerciseAmount > 12) {
+            console.error("The number of exercises must be between 4 and 12.");
+            return;
+        }
+    
+        const lowerBodyGroups = ['_glutes', '_quadriceps', '_hamstrings', '_calves'];
+        const selectedExercises = [];
+        const usedMuscleGroups = new Set();
+        const usedExerciseNames = new Set();
+    
+        while (selectedExercises.length < exerciseAmount) {
+            const availableGroups = lowerBodyGroups.filter(group => !usedMuscleGroups.has(group));
+    
+            // If all groups are used, reset to allow repeats of muscle groups but still track exercise names
+            if (availableGroups.length === 0) {
+                usedMuscleGroups.clear();
+                continue;
+            }
+    
+            // Select random muscle group from available groups
+            const randomGroup = availableGroups[Math.floor(Math.random() * availableGroups.length)];
+            usedMuscleGroups.add(randomGroup);
+    
+            // Filter exercises to only those not already used
+            const exercises = this[randomGroup].filter(exercise => !usedExerciseNames.has(exercise.exerciseName));
+            if (exercises.length === 0) {
+                continue; // Skip if no available exercises are left in this group
+            }
+    
+            // Select a random exercise from the filtered list
+            const randomExercise = exercises[Math.floor(Math.random() * exercises.length)];
+            usedExerciseNames.add(randomExercise.exerciseName);
+    
+            // Determine sets and reps based on fatigue number
+            let sets, reps;
+            if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
+                sets = 4;
+                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
+                sets = 3;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
+                sets = 2;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+            }
+    
+            // Add exercise to the workout list
+            selectedExercises.push({
+                muscleGroup: randomGroup.substring(1), // Remove the underscore for display
+                exerciseName: randomExercise.exerciseName,
+                sets: sets,
+                reps: reps,
+                fatigueNum: randomExercise.fatigueNum
+            });
+        }
+    
+        // Sort exercises by muscle group and then by fatigue number descending
+        selectedExercises.sort((a, b) => {
+            if (a.muscleGroup === b.muscleGroup) {
+                return b.fatigueNum - a.fatigueNum;
+            }
+            return a.muscleGroup.localeCompare(b.muscleGroup);
+        });
+    
+        return selectedExercises;
+    },
+    generateUpperPushWorkout(exerciseAmount) {
+        if (exerciseAmount < 4 || exerciseAmount > 12) {
+            console.error("The number of exercises must be between 4 and 12.");
+            return;
+        }
+    
+        const upperPushBodyGroups = ['_chest', '_triceps', '_shoulders'];
+        const selectedExercises = [];
+        const usedMuscleGroups = new Set();
+        const usedExerciseNames = new Set();
+    
+        while (selectedExercises.length < exerciseAmount) {
+            const availableGroups = upperPushBodyGroups.filter(group => !usedMuscleGroups.has(group));
+    
+            // If all groups are used, reset to allow repeats of muscle groups but still track exercise names
+            if (availableGroups.length === 0) {
+                usedMuscleGroups.clear();
+                continue;
+            }
+    
+            // Select random muscle group from available groups
+            const randomGroup = availableGroups[Math.floor(Math.random() * availableGroups.length)];
+            usedMuscleGroups.add(randomGroup);
+    
+            // Filter exercises to only those not already used
+            const exercises = this[randomGroup].filter(exercise => !usedExerciseNames.has(exercise.exerciseName));
+            if (exercises.length === 0) {
+                continue; // Skip if no available exercises are left in this group
+            }
+    
+            // Select a random exercise from the filtered list
+            const randomExercise = exercises[Math.floor(Math.random() * exercises.length)];
+            usedExerciseNames.add(randomExercise.exerciseName);
+    
+            // Determine sets and reps based on fatigue number
+            let sets, reps;
+            if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
+                sets = 4;
+                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
+                sets = 3;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
+                sets = 2;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+            }
+    
+            // Add exercise to the workout list
+            selectedExercises.push({
+                muscleGroup: randomGroup.substring(1), // Remove the underscore for display
+                exerciseName: randomExercise.exerciseName,
+                sets: sets,
+                reps: reps,
+                fatigueNum: randomExercise.fatigueNum
+            });
+        }
+    
+        // Sort exercises by muscle group and then by fatigue number descending
+        selectedExercises.sort((a, b) => {
+            if (a.muscleGroup === b.muscleGroup) {
+                return b.fatigueNum - a.fatigueNum;
+            }
+            return a.muscleGroup.localeCompare(b.muscleGroup);
+        });
+    
+        return selectedExercises;
+    },
+
+    generateUpperPullWorkout(exerciseAmount) {
+        if (exerciseAmount < 4 || exerciseAmount > 12) {
+            console.error("The number of exercises must be between 4 and 12.");
+            return;
+        }
+    
+        const upperPullBodyGroups = ['_back', '_biceps', '_forearms'];
+        const selectedExercises = [];
+        const usedMuscleGroups = new Set();
+        const usedExerciseNames = new Set();
+    
+        while (selectedExercises.length < exerciseAmount) {
+            const availableGroups = upperPullBodyGroups.filter(group => !usedMuscleGroups.has(group));
+    
+            // If all groups are used, reset to allow repeats of muscle groups but still track exercise names
+            if (availableGroups.length === 0) {
+                usedMuscleGroups.clear();
+                continue;
+            }
+    
+            // Select random muscle group from available groups
+            const randomGroup = availableGroups[Math.floor(Math.random() * availableGroups.length)];
+            usedMuscleGroups.add(randomGroup);
+    
+            // Filter exercises to only those not already used
+            const exercises = this[randomGroup].filter(exercise => !usedExerciseNames.has(exercise.exerciseName));
+            if (exercises.length === 0) {
+                continue; // Skip if no available exercises are left in this group
+            }
+    
+            // Select a random exercise from the filtered list
+            const randomExercise = exercises[Math.floor(Math.random() * exercises.length)];
+            usedExerciseNames.add(randomExercise.exerciseName);
+    
+            // Determine sets and reps based on fatigue number
+            let sets, reps;
+            if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
+                sets = 4;
+                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
+                sets = 3;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
+                sets = 2;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+            }
+    
+            // Add exercise to the workout list
+            selectedExercises.push({
+                muscleGroup: randomGroup.substring(1), // Remove the underscore for display
+                exerciseName: randomExercise.exerciseName,
+                sets: sets,
+                reps: reps,
+                fatigueNum: randomExercise.fatigueNum
+            });
+        }
+    
+        // Sort exercises by muscle group and then by fatigue number descending
+        selectedExercises.sort((a, b) => {
+            if (a.muscleGroup === b.muscleGroup) {
+                return b.fatigueNum - a.fatigueNum;
+            }
+            return a.muscleGroup.localeCompare(b.muscleGroup);
+        });
+    
+        return selectedExercises;
+    },
+
+    generateShoulderWorkout(exerciseAmount) {
+        if (exerciseAmount < 4 || exerciseAmount > 6) {
+            console.error("The number of exercises for shoulders should be between 4 and 6.");
+            return;
+        }
+    
+        const shoulderBodyGroup = ['_shoulders'];
+        const selectedExercises = [];
+        const usedMuscleGroups = new Set();
+        const usedExerciseNames = new Set();
+    
+        while (selectedExercises.length < exerciseAmount) {
+            const availableGroups = shoulderBodyGroup.filter(group => !usedMuscleGroups.has(group));
+    
+            // If all groups are used, reset to allow repeats of muscle groups but still track exercise names
+            if (availableGroups.length === 0) {
+                usedMuscleGroups.clear();
+                continue;
+            }
+    
+            // Select random muscle group from available groups
+            const randomGroup = availableGroups[Math.floor(Math.random() * availableGroups.length)];
+            usedMuscleGroups.add(randomGroup);
+    
+            // Filter exercises to only those not already used
+            const exercises = this[randomGroup].filter(exercise => !usedExerciseNames.has(exercise.exerciseName));
+            if (exercises.length === 0) {
+                continue; // Skip if no available exercises are left in this group
+            }
+    
+            // Select a random exercise from the filtered list
+            const randomExercise = exercises[Math.floor(Math.random() * exercises.length)];
+            usedExerciseNames.add(randomExercise.exerciseName);
+    
+            // Determine sets and reps based on fatigue number
+            let sets, reps;
+            if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
+                sets = 4;
+                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
+                sets = 3;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
+                sets = 2;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+            }
+    
+            // Add exercise to the workout list
+            selectedExercises.push({
+                muscleGroup: randomGroup.substring(1), // Remove the underscore for display
+                exerciseName: randomExercise.exerciseName,
+                sets: sets,
+                reps: reps,
+                fatigueNum: randomExercise.fatigueNum
+            });
+        }
+    
+        // Sort exercises by muscle group and then by fatigue number descending
+        selectedExercises.sort((a, b) => {
+            if (a.muscleGroup === b.muscleGroup) {
+                return b.fatigueNum - a.fatigueNum;
+            }
+            return a.muscleGroup.localeCompare(b.muscleGroup);
+        });
+    
+        return selectedExercises;
+    },
+
+    generateArmWorkout(exerciseAmount) {
+        if (exerciseAmount < 4 || exerciseAmount > 8) {
+            console.error("The number of exercises for arms should be between 4 and 8.");
+            return;
+        }
+    
+        const armBodyGroup = ['_triceps', '_biceps', '_forearms'];
+        const selectedExercises = [];
+        const usedMuscleGroups = new Set();
+        const usedExerciseNames = new Set();
+    
+        while (selectedExercises.length < exerciseAmount) {
+            const availableGroups = armBodyGroup.filter(group => !usedMuscleGroups.has(group));
+    
+            // If all groups are used, reset to allow repeats of muscle groups but still track exercise names
+            if (availableGroups.length === 0) {
+                usedMuscleGroups.clear();
+                continue;
+            }
+    
+            // Select random muscle group from available groups
+            const randomGroup = availableGroups[Math.floor(Math.random() * availableGroups.length)];
+            usedMuscleGroups.add(randomGroup);
+    
+            // Filter exercises to only those not already used
+            const exercises = this[randomGroup].filter(exercise => !usedExerciseNames.has(exercise.exerciseName));
+            if (exercises.length === 0) {
+                continue; // Skip if no available exercises are left in this group
+            }
+    
+            // Select a random exercise from the filtered list
+            const randomExercise = exercises[Math.floor(Math.random() * exercises.length)];
+            usedExerciseNames.add(randomExercise.exerciseName);
+    
+            // Determine sets and reps based on fatigue number
+            let sets, reps;
+            if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
+                sets = 4;
+                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
+                sets = 3;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+            } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
+                sets = 2;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+            }
+    
+            // Add exercise to the workout list
+            selectedExercises.push({
+                muscleGroup: randomGroup.substring(1), // Remove the underscore for display
+                exerciseName: randomExercise.exerciseName,
+                sets: sets,
+                reps: reps,
+                fatigueNum: randomExercise.fatigueNum
+            });
+        }
+    
+        // Sort exercises by muscle group and then by fatigue number descending
+        selectedExercises.sort((a, b) => {
+            if (a.muscleGroup === b.muscleGroup) {
+                return b.fatigueNum - a.fatigueNum;
+            }
+            return a.muscleGroup.localeCompare(b.muscleGroup);
+        });
+    
+        return selectedExercises;
+    },
 };
 
 export default exerciseList;
