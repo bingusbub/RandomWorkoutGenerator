@@ -5,50 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Randomizer</title>
     <script src="./main.mjs" type="module" defer></script>
+    <link rel="stylesheet" href="./resources/styles.css">
 </head>
 <body>
-    <div class="header">
-        <div class="container">
+    <header class="header">
+        <div class="container flex-between">
             <div class="logo">
-                <img id="logo" src="#">
+                <img id="logo" src="./resources/Images/Logo.webp" alt="Workout Randomizer Logo"><span> RANDOM WORKOUT GENERATOR</span>
             </div>
-            <div class="header-list">
-                <ul>
+            <nav class="header-list">
+                <ul class="flex">
                     <li><a href="#">ABOUT</a></li>
                     <li><a href="#">CONTACT</a></li>
                 </ul>
-            </div>
+            </nav>
         </div>
-    </div>
-    <div class="main">
+    </header>
+    <main class="main">
         <div class="container">
             <label for="worktype">WHAT KIND OF WORKOUT DO YOU WANT TO GENERATE?</label>
-            <br>
-                <select id="worktype" name="worktype" required>
-                    <option value="full" id="fbw">Full Body Workout</option>
-                    <option value="upper" id="ubw">Upper Body Workout</option>
-                    <option value="lower" id="lbw">Lower Body Workout></option>
-                    <option value="upperpush" id="upushw">Upper Push Workout</option>
-                    <option value="upperpull" id="upullw">Upper Pull Workout</option>
-                    <option value="shoulders" id="sw">Shoulder Workout</option>
-                    <option value="arms" id="aw">Arm Workout</option>
-                </select>
-            <br>
+            <select id="worktype" name="worktype" required>
+                <option value="full">Full Body Workout</option>
+                <option value="upper">Upper Body Workout</option>
+                <option value="lower">Lower Body Workout</option>
+                <option value="upperpush">Upper Push Workout</option>
+                <option value="upperpull">Upper Pull Workout</option>
+                <option value="shoulders">Shoulder Workout</option>
+                <option value="arms">Arm Workout</option>
+            </select>
             <label for="amount">HOW MANY EXERCISES DO YOU WANT IN YOUR WORKOUT? (Min: 4 Max: 12)</label>
-            <br>
-                <input type="number" name="amount" id="amount" min="4" max="12">
-            <br>
+            <input type="number" name="amount" id="amount" min="4" max="12">
             <button id="generateWorkout">Generate!</button>
         </div>
         <div class="container">
-            
             <table id="workout">
                 <thead>
                     <tr>
-                        <th scope="col" id="exerciseName">EXERCISE</th>
-                        <th scope="col" id="sets">SETS</th>
-                        <th scope="col" id="reps">REPS</th>
-                        <th scope="col" id="fatigueNum">FATIGUE</th>
+                        <th scope="col">EXERCISE</th>
+                        <th scope="col">SETS</th>
+                        <th scope="col">REPS</th>
+                        <th scope="col">FATIGUE</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,9 +53,19 @@
                 </tfoot>
             </table>
         </div>
-        <div class="container">
-            <h3>ABOUT</h3>
+        <div class="container grid">
+            <div>
+                <h3>ABOUT</h3>
+                <p>This application will generate a randomized workout of your choosing. You can create either a Full Body, Upper Body, Lower Body, Upper Push, Lower Push, Shoulder, or Arm Workout.</p>
+                <p>Exercises are grouped by muscles and sorted by fatigue within the muscle group. Each exercise has a fatigue number (10 = most fatiguing, 1 = least).</p>
+                <p>Future updates may include more exercises, local exercise addition, and randomly generated plans.</p>
+            </div>
+            <div>
+                <h3>CONTACT</h3>
+                <p>Created by Sean Kochalyk</p>
+                <p><a href="mailto:sean.kochalyk@gmail.com">Contact Me!</a></p>
+            </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>
