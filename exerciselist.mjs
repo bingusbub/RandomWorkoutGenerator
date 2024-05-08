@@ -144,16 +144,13 @@ const exerciseList = {
             let sets, reps;
             if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
                 sets = 4;
-                // Generate even numbers between 8 and 30
-                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8;
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
             } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
                 sets = 3;
-                // Generate even numbers between 8 and 20
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8;
+                reps = Math.floor(Math.random() * ((16 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 16
             } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
                 sets = 2;
-                // Generate even numbers between 8 and 20
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8;
+                reps = Math.floor(Math.random() * ((12 - 6) / 2 + 1)) * 2 + 6; // Generate even numbers between 6 and 12
             }
     
             // Add exercise to the workout list
@@ -206,17 +203,16 @@ const exerciseList = {
             const randomExercise = exercises[Math.floor(Math.random() * exercises.length)];
             usedExerciseNames.add(randomExercise.exerciseName);
     
-            // Determine sets and reps based on fatigue number
             let sets, reps;
             if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
                 sets = 4;
-                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
             } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
                 sets = 3;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((16 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 16
             } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
                 sets = 2;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+                reps = Math.floor(Math.random() * ((12 - 6) / 2 + 1)) * 2 + 6; // Generate even numbers between 6 and 12
             }
     
             // Add exercise to the workout list
@@ -278,13 +274,13 @@ const exerciseList = {
             let sets, reps;
             if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
                 sets = 4;
-                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
             } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
                 sets = 3;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((16 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 16
             } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
                 sets = 2;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+                reps = Math.floor(Math.random() * ((12 - 6) / 2 + 1)) * 2 + 6; // Generate even numbers between 6 and 12
             }
     
             // Add exercise to the workout list
@@ -345,13 +341,13 @@ const exerciseList = {
             let sets, reps;
             if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
                 sets = 4;
-                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
             } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
                 sets = 3;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((16 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 16
             } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
                 sets = 2;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+                reps = Math.floor(Math.random() * ((12 - 6) / 2 + 1)) * 2 + 6; // Generate even numbers between 6 and 12
             }
     
             // Add exercise to the workout list
@@ -413,13 +409,13 @@ const exerciseList = {
             let sets, reps;
             if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
                 sets = 4;
-                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
             } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
                 sets = 3;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((16 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 16
             } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
                 sets = 2;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+                reps = Math.floor(Math.random() * ((12 - 6) / 2 + 1)) * 2 + 6; // Generate even numbers between 6 and 12
             }
     
             // Add exercise to the workout list
@@ -481,13 +477,13 @@ const exerciseList = {
             let sets, reps;
             if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
                 sets = 4;
-                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
             } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
                 sets = 3;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((16 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 16
             } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
                 sets = 2;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+                reps = Math.floor(Math.random() * ((12 - 6) / 2 + 1)) * 2 + 6; // Generate even numbers between 6 and 12
             }
     
             // Add exercise to the workout list
@@ -549,13 +545,13 @@ const exerciseList = {
             let sets, reps;
             if (randomExercise.fatigueNum >= 1 && randomExercise.fatigueNum <= 4) {
                 sets = 4;
-                reps = Math.floor(Math.random() * ((30 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
             } else if (randomExercise.fatigueNum >= 5 && randomExercise.fatigueNum <= 7) {
                 sets = 3;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 30
+                reps = Math.floor(Math.random() * ((16 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 16
             } else if (randomExercise.fatigueNum >= 8 && randomExercise.fatigueNum <= 10) {
                 sets = 2;
-                reps = Math.floor(Math.random() * ((20 - 8) / 2 + 1)) * 2 + 8; // Generate even numbers between 8 and 20
+                reps = Math.floor(Math.random() * ((12 - 6) / 2 + 1)) * 2 + 6; // Generate even numbers between 6 and 12
             }
     
             // Add exercise to the workout list
