@@ -154,3 +154,51 @@ h3, h4 {
 p {
     margin-bottom: 15px;
 }
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        box-shadow: none; 
+    }
+
+    .logo {
+        flex-direction: column; 
+        align-items: flex-start; 
+    }
+
+    .logo img {
+        max-width: 60px; 
+    }
+
+    .logo span {
+        font-size: 1.2em; 
+    }
+
+    .header-list ul {
+        flex-direction: column; 
+        gap: 8px; 
+    }
+
+    .header-list a {
+        padding: 5px 8px; 
+    }
+
+    .grid {
+        grid-template-columns: 1fr; 
+        gap: 15px; 
+    }
+
+    button#generateWorkout {
+        width: 100%; 
+        padding: 10px;
+    }
+
+    table th, table td {
+        padding: 6px; 
+    }
+
+    header, main {
+        padding: 10px; 
+    }
+}
